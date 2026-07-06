@@ -14,14 +14,14 @@ $categories = catalog_get_categories();
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-brand">
                         <img src="<?= $basePath ?>assets/images/icon.png" alt="" class="footer-brand__icon" width="64" height="64" loading="lazy">
-                        <p class="footer-brand__desc">Your trusted source for copier machine PDF catalogs. Browse, view, and download product brochures from leading brands.</p>
+                        <p class="footer-brand__desc">Brochure Copier Catalog is a free online platform for finding and downloading copier brochures in PDF format. Whether you're a copier dealer comparing models, a technician looking up specs, or an office manager researching your next purchase, our site makes it easy to find the exact brochure you need — organized by brand. <a href="<?= $basePath ?>about/">Read more</a></p>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-md-6">
                     <h5 class="footer-heading">Copier Brochures</h5>
                     <ul class="footer-links">
-                        <?php foreach (array_slice($categories, 0, 8) as $cat): ?>
+                        <?php foreach (array_slice($categories, 0, 6) as $cat): ?>
                         <li><a href="<?= htmlspecialchars($cat['url']) ?>"><?= htmlspecialchars($cat['name']) ?></a></li>
                         <?php endforeach; ?>
                         <?php if (count($categories) > 8): ?>
@@ -58,7 +58,7 @@ $categories = catalog_get_categories();
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6 text-center text-md-start">
-                    <p class="footer-copyright mb-0">&copy; <?= date('Y') ?> <?= htmlspecialchars(CATALOG_SITE_NAME) ?>. All rights reserved.</p>
+                    <p class="footer-copyright mb-0">&copy; <?= date('Y') ?> Brochure Copier Catalog. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <div class="footer-social">

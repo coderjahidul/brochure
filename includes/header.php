@@ -31,7 +31,7 @@ $basePath = CATALOG_BASE_PATH;
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container">
             <a class="navbar-brand site-logo" href="<?= $basePath ?>">
-                <img src="<?= $basePath ?>assets/images/logo.png" alt="<?= htmlspecialchars(CATALOG_SITE_NAME) ?> logo" width="220" height="33" loading="eager">
+                <img src="<?= catalog_url('assets/images/logo.png') ?>" alt="<?= htmlspecialchars(CATALOG_SITE_NAME) ?>" width="181" height="60" loading="eager">
             </a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
