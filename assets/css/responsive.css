@@ -1,0 +1,105 @@
+/**
+ * Copier Catalog � responsive overrides
+ * Mobile-first adjustments
+ */
+
+/* Tablet: 3 cards per row (col-lg-4) */
+@media (max-width: 1199.98px) {
+    .pdf-card__title {
+        font-size: 0.8125rem;
+    }
+}
+
+/* Mobile navigation */
+@media (max-width: 991.98px) {
+    .header-search-form {
+        max-width: 100%;
+        width: 100%;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--cc-border);
+    }
+
+    .site-header .navbar-collapse {
+        padding-bottom: 0.75rem;
+    }
+
+    .hero-section {
+        padding: 2.5rem 0;
+    }
+
+    .hero-search .input-group {
+        flex-direction: column;
+    }
+
+    .hero-search .btn-light {
+        width: 100%;
+        padding: 0.75rem;
+        margin-top: 0.5rem;
+        border-radius: 0 0 0.375rem 0.375rem !important;
+    }
+
+    .hero-search .form-control {
+        border-radius: 0.375rem 0.375rem 0 0 !important;
+    }
+
+    .category-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .category-search {
+        max-width: 100%;
+    }
+
+    .footer-social {
+        margin-top: 1rem;
+    }
+}
+
+/* Small mobile: 1 card per row */
+@media (max-width: 575.98px) {
+    .pdf-grid > .col-sm-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .site-logo img {
+        height: 32px;
+    }
+
+    .page-section {
+        padding: 2rem 0;
+    }
+
+    .content-card {
+        padding: 1.25rem;
+    }
+
+    .category-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .category-card__icon {
+        margin: 0 auto;
+    }
+
+    .scroll-to-top {
+        bottom: 16px;
+        right: 16px;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Print */
+@media print {
+    .site-header,
+    .site-footer,
+    .scroll-to-top,
+    .hero-search,
+    .pdf-card__actions {
+        display: none !important;
+    }
+}

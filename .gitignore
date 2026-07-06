@@ -1,0 +1,42 @@
+# Generated cache
+cache/catalog-cache.json
+cache/thumbs/
+
+# Environment
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Brand PDF catalogs
+brother/
+canon/
+epson/
+fuji-xerox/
+hp/
+kip/
+kodak/
+konica-minolta/
+kyocera/
+kyocera_au/
+lexmark/
+oki/
+ricoh/
+ricoh_au/
+riso/
+samsung/
+sharp/
+xerox/
