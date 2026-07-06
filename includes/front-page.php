@@ -1,9 +1,9 @@
 <?php
 /**
- * Homepage — displays latest PDFs per brand folder.
+ * Homepage ï¿½ displays latest PDFs per brand folder.
  */
-$pageTitle = 'PDF Catalog';
-$pageDescription = 'Browse and download copier machine PDF catalogs organized by brand.';
+$pageTitle = 'Free Copier Machine Brochures';
+$pageDescription = 'Browse copier brochures from Canon, Epson, HP, Ricoh, Xerox, and other leading brands. View online or download for free - no registration required.';
 $currentPage = 'home';
 
 require_once __DIR__ . '/functions.php';
@@ -15,8 +15,8 @@ $categories = catalog_get_categories();
 <section class="hero-section">
     <div class="container">
         <div class="hero-content">
-            <h1 class="hero-title">Copier Machine PDF Catalogs</h1>
-            <p class="hero-subtitle">Browse product brochures from leading copier brands. View online or download instantly ï¿½ no registration required.</p>
+            <h1 class="hero-title">Free Copier Machine Brochures</h1>
+            <p class="hero-subtitle">Browse copier brochures from Canon, Epson, HP, Ricoh, Xerox, and other leading brands. View online or download for free - no registration required.</p>
         </div>
     </div>
 </section>
