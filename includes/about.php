@@ -1,11 +1,11 @@
 <?php
 /**
- * About page – frontend only.
+ * About page ï¿½ frontend only.
  */
 require_once __DIR__ . '/functions.php';
 
 $pageTitle = 'About Us';
-$pageDescription = 'Learn about Copier Catalog — your destination for copier machine PDF brochures.';
+$pageDescription = 'Learn about Copier Catalog ï¿½ your destination for copier machine PDF brochures.';
 $currentPage = 'about';
 
 require_once __DIR__ . '/header.php';
@@ -29,7 +29,7 @@ require_once __DIR__ . '/header.php';
             <div class="col-lg-8">
                 <div class="content-card">
                     <p class="lead">Copier Catalog is a free online resource for browsing and downloading copier machine product brochures in PDF format.</p>
-                    <p>We organize catalogs by brand so dealers, technicians, and office managers can quickly find the specifications and features they need — without creating an account or navigating complex portals.</p>
+                    <p>We organize catalogs by brand so dealers, technicians, and office managers can quickly find the specifications and features they need ï¿½ without creating an account or navigating complex portals.</p>
                     <h2>What We Offer</h2>
                     <ul>
                         <li>PDF catalogs from major copier brands</li>
@@ -38,8 +38,8 @@ require_once __DIR__ . '/header.php';
                         <li>Mobile-friendly, fast-loading pages</li>
                     </ul>
                     <h2>How It Works</h2>
-                    <p>Catalogs are automatically loaded from our document library. When new PDFs are added to a brand folder, they appear on the site immediately — no manual updates required.</p>
-                    <a href="<?= CATALOG_BASE_PATH ?>categories/" class="btn btn-primary mt-3">Browse Categories</a>
+                    <p>Catalogs are automatically loaded from our document library. When new PDFs are added to a brand folder, they appear on the site immediately ï¿½ no manual updates required.</p>
+                    <a href="<?= CATALOG_BASE_PATH ?>copier-brochures/" class="btn btn-primary mt-3">Browse Copier Brochures</a>
                 </div>
             </div>
         </div>

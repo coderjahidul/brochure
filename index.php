@@ -15,7 +15,7 @@ switch ($page) {
         require __DIR__ . '/includes/search.php';
         break;
 
-    case 'categories':
+    case 'copier-brochures':
         require __DIR__ . '/includes/categories.php';
         break;
 

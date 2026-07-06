@@ -1,12 +1,12 @@
 <?php
 /**
- * Categories listing page.
+ * Copier Brochures listing page.
  */
 require_once __DIR__ . '/functions.php';
 
-$pageTitle = 'All Categories';
-$pageDescription = 'Browse all copier brand categories and their PDF product catalogs.';
-$currentPage = 'categories';
+$pageTitle = 'Copier Brochures';
+$pageDescription = 'Browse and compare copier machine brochures from trusted brands.';
+$currentPage = 'copier-brochures';
 $categories = catalog_get_categories();
 
 require_once __DIR__ . '/header.php';
@@ -17,11 +17,11 @@ require_once __DIR__ . '/header.php';
         <nav aria-label="Breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?= CATALOG_BASE_PATH ?>">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Categories</li>
+                <li class="breadcrumb-item active" aria-current="page">Copier Brochures</li>
             </ol>
         </nav>
-        <h1 class="page-title">All Categories</h1>
-        <p class="page-description">Explore PDF catalogs organized by copier brand.</p>
+        <h1 class="page-title">Copier Brochures</h1>
+        <p class="page-description">Browse and compare copier machine brochures from trusted brands.</p>
     </div>
 </section>
 

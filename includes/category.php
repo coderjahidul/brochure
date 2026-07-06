@@ -1,6 +1,6 @@
 <?php
 /**
- * Category page – all PDFs with search and pagination.
+ * Category page ï¿½ all PDFs with search and pagination.
  */
 require_once __DIR__ . '/functions.php';
 
@@ -10,7 +10,7 @@ $category = catalog_get_category($slug);
 if ($category === null) {
     http_response_code(404);
     $pageTitle = 'Category Not Found';
-    $currentPage = 'categories';
+    $currentPage = 'copier-brochures';
     require_once __DIR__ . '/header.php';
     echo '<section class="page-section"><div class="container">';
     echo '<div class="catalog-empty"><i class="fa-regular fa-face-frown"></i>';
@@ -28,7 +28,7 @@ $pagination = catalog_paginate($filteredPdfs, $page);
 
 $pageTitle = $category['name'] . ' PDF Catalogs';
 $pageDescription = $category['description'];
-$currentPage = 'categories';
+$currentPage = 'copier-brochures/';
 $baseUrl = $category['url'];
 $extraParams = $searchQuery !== '' ? ['q' => $searchQuery] : [];
 
@@ -40,7 +40,7 @@ require_once __DIR__ . '/header.php';
         <nav aria-label="Breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?= CATALOG_BASE_PATH ?>">Home</a></li>
-                <li class="breadcrumb-item"><a href="<?= CATALOG_BASE_PATH ?>categories/">Categories</a></li>
+                <li class="breadcrumb-item"><a href="<?= CATALOG_BASE_PATH ?>copier-brochures/">Copier Brochures</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><?= htmlspecialchars($category['name']) ?></li>
             </ol>
         </nav>
@@ -54,7 +54,7 @@ require_once __DIR__ . '/header.php';
         <div class="category-toolbar">
             <form class="category-search" method="get" action="<?= htmlspecialchars($category['url']) ?>" role="search">
                 <div class="input-group">
-                    <input type="search" class="form-control" name="q" placeholder="Search in <?= htmlspecialchars($category['name']) ?>…"
+                    <input type="search" class="form-control" name="q" placeholder="Search in <?= htmlspecialchars($category['name']) ?>ï¿½"
                            value="<?= htmlspecialchars($searchQuery) ?>" aria-label="Search PDFs in category">
                     <button class="btn btn-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>

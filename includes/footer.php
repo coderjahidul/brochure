@@ -19,13 +19,13 @@ $categories = catalog_get_categories();
                 </div>
 
                 <div class="col-lg-3 col-md-6">
-                    <h5 class="footer-heading">Categories</h5>
+                    <h5 class="footer-heading">Copier Brochures</h5>
                     <ul class="footer-links">
                         <?php foreach (array_slice($categories, 0, 8) as $cat): ?>
                         <li><a href="<?= htmlspecialchars($cat['url']) ?>"><?= htmlspecialchars($cat['name']) ?></a></li>
                         <?php endforeach; ?>
                         <?php if (count($categories) > 8): ?>
-                        <li><a href="<?= $basePath ?>categories/">View all categories</a></li>
+                        <li><a href="<?= $basePath ?>copier-brochures/">View all Copier Brochures</a></li>
                         <?php endif; ?>
                     </ul>
                 </div>
@@ -34,7 +34,7 @@ $categories = catalog_get_categories();
                     <h5 class="footer-heading">Quick Links</h5>
                     <ul class="footer-links">
                         <li><a href="<?= $basePath ?>">Home</a></li>
-                        <li><a href="<?= $basePath ?>categories/">Categories</a></li>
+                        <li><a href="<?= $basePath ?>copier-brochures/">Copier Brochures</a></li>
                         <li><a href="<?= $basePath ?>search/">Search Catalogs</a></li>
                         <li><a href="<?= $basePath ?>about/">About Us</a></li>
                         <li><a href="https://brochure.copiercatalog.com/blog/">Blog</a></li>
