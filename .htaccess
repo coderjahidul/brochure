@@ -10,8 +10,8 @@
     # Category pages: /category/ricoh/
     RewriteRule ^category/([a-z0-9-]+)/?$ index.php?page=category&slug=$1 [L,QSA]
 
-    # Search: /search/?q=keyword
-    RewriteRule ^search/?$ index.php?page=search [L,QSA]
+    # Redirect old search URLs to homepage
+    RewriteRule ^search/?$ index.php [L,R=301,QSA]
 
     # Static pages
     RewriteRule ^copier-brochures/?$ index.php?page=copier-brochures [L,QSA]

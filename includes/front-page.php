@@ -1,12 +1,24 @@
 <?php
 /**
- * Homepage � displays latest PDFs per brand folder.
+ * Homepage – displays latest PDFs per brand folder, or search results when ?q= is set.
  */
-$pageTitle = 'Free Copier Machine Brochures';
-$pageDescription = 'Browse copier brochures from Canon, Epson, HP, Ricoh, Xerox, and other leading brands. View online or download for free - no registration required.';
-$currentPage = 'home';
-
 require_once __DIR__ . '/functions.php';
+
+$query = trim($_GET['q'] ?? '');
+$pageNum = max(1, (int) ($_GET['page'] ?? 1));
+$isSearch = $query !== '';
+
+if ($isSearch) {
+    $results = catalog_search($query);
+    $pagination = catalog_paginate($results['pdfs'], $pageNum, CATALOG_PER_PAGE);
+    $pageTitle = 'Search: ' . $query;
+    $pageDescription = 'Search results for "' . $query . '" in copier machine PDF catalogs.';
+} else {
+    $pageTitle = 'Free Copier Machine Brochures';
+    $pageDescription = 'Browse copier brochures from Canon, Epson, HP, Ricoh, Xerox, and other leading brands. View online or download for free - no registration required.';
+}
+
+$currentPage = 'home';
 require_once __DIR__ . '/header.php';
 
 $categories = catalog_get_categories();
@@ -15,13 +27,63 @@ $categories = catalog_get_categories();
 <section class="hero-section">
     <div class="container">
         <div class="hero-content">
+            <?php if ($isSearch): ?>
+            <h1 class="hero-title">Search Results</h1>
+            <p class="hero-subtitle">Showing results for &ldquo;<?= htmlspecialchars($query) ?>&rdquo;</p>
+            <?php else: ?>
             <h1 class="hero-title">Free Copier Machine Brochures</h1>
             <p class="hero-subtitle">Browse copier brochures from Canon, Epson, HP, Ricoh, Xerox, and other leading brands. View online or download for free - no registration required.</p>
+            <?php endif; ?>
         </div>
     </div>
 </section>
 
-<?php if (empty($categories)): ?>
+<?php if ($isSearch): ?>
+
+<section class="page-section">
+    <div class="container">
+        <?php if (!empty($results['categories'])): ?>
+        <div class="search-categories mb-5">
+            <h2 class="search-section-title">Matching Categories</h2>
+            <div class="row g-3">
+                <?php foreach ($results['categories'] as $cat): ?>
+                <div class="col-md-4 col-sm-6">
+                    <a href="<?= htmlspecialchars($cat['url']) ?>" class="category-chip">
+                        <i class="fa-solid fa-folder"></i>
+                        <span><?= htmlspecialchars($cat['name']) ?></span>
+                        <small><?= (int) $cat['pdf_count'] ?> PDFs</small>
+                    </a>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <?php endif; ?>
+
+        <div class="search-results">
+            <h2 class="search-section-title">
+                Matching PDFs
+                <span class="text-muted fs-6">(<?= (int) $pagination['total'] ?>)</span>
+            </h2>
+
+            <?php if (empty($pagination['items'])): ?>
+            <div class="catalog-empty catalog-empty--sm">
+                <p>No PDF catalogs matched your search.</p>
+            </div>
+            <?php else: ?>
+            <?= catalog_render_pdf_grid($pagination['items']) ?>
+            <?= catalog_render_pagination(
+                $pagination['page'],
+                $pagination['total_pages'],
+                CATALOG_BASE_PATH,
+                ['q' => $query]
+            ) ?>
+            <?php endif; ?>
+        </div>
+    </div>
+</section>
+
+<?php elseif (empty($categories)): ?>
+
 <section class="page-section">
     <div class="container">
         <div class="catalog-empty">
@@ -31,6 +93,7 @@ $categories = catalog_get_categories();
         </div>
     </div>
 </section>
+
 <?php else: ?>
 
 <?php foreach ($categories as $category): ?>

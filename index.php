@@ -4,15 +4,14 @@
  */
 require_once __DIR__ . '/includes/functions.php';
 
-$page = $_GET['page'] ?? 'home';
+$route = $_GET['page'] ?? 'home';
+if (is_numeric($route)) {
+    $route = 'home';
+}
 
-switch ($page) {
+switch ($route) {
     case 'category':
         require __DIR__ . '/includes/category.php';
-        break;
-
-    case 'search':
-        require __DIR__ . '/includes/search.php';
         break;
 
     case 'copier-brochures':

@@ -58,7 +58,7 @@ $basePath = CATALOG_BASE_PATH;
                     </li>
                 </ul>
 
-                <form class="header-search-form d-flex" role="search" method="get" action="<?= $basePath ?>search/">
+                <form class="header-search-form d-flex" role="search" method="get" action="<?= $basePath ?>">
                     <div class="input-group">
                         <input type="search" class="form-control" name="q" placeholder="Search catalogs"
                                value="<?= htmlspecialchars($_GET['q'] ?? '') ?>" aria-label="Search catalogs">

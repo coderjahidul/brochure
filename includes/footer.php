@@ -35,7 +35,6 @@ $categories = catalog_get_categories();
                     <ul class="footer-links">
                         <li><a href="<?= $basePath ?>">Home</a></li>
                         <li><a href="<?= $basePath ?>copier-brochures/">Copier Brochures</a></li>
-                        <li><a href="<?= $basePath ?>search/">Search Catalogs</a></li>
                         <li><a href="<?= $basePath ?>about/">About Us</a></li>
                         <li><a href="https://brochure.copiercatalog.com/blog/">Blog</a></li>
                         <li><a href="<?= $basePath ?>contact/">Contact</a></li>
