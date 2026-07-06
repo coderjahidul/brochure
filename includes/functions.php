@@ -8,6 +8,8 @@ declare(strict_types=1);
 
 /** Site configuration */
 define('CATALOG_SITE_NAME', 'Copier Catalog');
+define('CATALOG_CONTACT_EMAIL', 'contact@brochure.copiercatalog.com');
+define('CATALOG_CONTACT_FROM', 'noreply@brochure.copiercatalog.com');
 define('CATALOG_ROOT', dirname(__DIR__));
 define('CATALOG_EXCLUDED_DIRS', ['api', 'assets', 'cache', 'includes', 'pdf-catalogs']);
 define('CATALOG_CACHE_FILE', CATALOG_ROOT . '/cache/catalog-cache.json');
@@ -572,4 +574,112 @@ function catalog_render_pdf_grid(array $pdfs): string
     }
     $html .= '</div>';
     return $html;
+}
+
+/**
+ * Start session when needed for contact form CSRF protection.
+ */
+function catalog_ensure_session(): void
+{
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+}
+
+/**
+ * CSRF token for the contact form.
+ */
+function catalog_contact_csrf_token(): string
+{
+    catalog_ensure_session();
+    if (empty($_SESSION['contact_csrf'])) {
+        $_SESSION['contact_csrf'] = bin2hex(random_bytes(32));
+    }
+
+    return $_SESSION['contact_csrf'];
+}
+
+function catalog_verify_contact_csrf(string $token): bool
+{
+    catalog_ensure_session();
+
+    return isset($_SESSION['contact_csrf']) && hash_equals($_SESSION['contact_csrf'], $token);
+}
+
+/**
+ * Validate and send a contact form submission.
+ *
+ * @param array<string, mixed> $post
+ * @return array{ok: bool, message: string, field_errors?: array<string, string>}
+ */
+function catalog_process_contact_form(array $post): array
+{
+    if (!empty($post['website'])) {
+        return ['ok' => true, 'message' => 'Thank you! Your message has been sent. We will get back to you soon.'];
+    }
+
+    $token = (string) ($post['csrf_token'] ?? '');
+    if (!catalog_verify_contact_csrf($token)) {
+        return ['ok' => false, 'message' => 'Invalid form submission. Please refresh the page and try again.'];
+    }
+
+    $name = trim((string) ($post['name'] ?? ''));
+    $email = trim((string) ($post['email'] ?? ''));
+    $subject = trim((string) ($post['subject'] ?? ''));
+    $message = trim((string) ($post['message'] ?? ''));
+
+    $fieldErrors = [];
+    if ($name === '' || strlen($name) > 100) {
+        $fieldErrors['name'] = 'Please enter your name.';
+    }
+    if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $fieldErrors['email'] = 'Please enter a valid email address.';
+    }
+    if (strlen($subject) > 200) {
+        $fieldErrors['subject'] = 'Subject is too long.';
+    }
+    if ($message === '' || strlen($message) > 5000) {
+        $fieldErrors['message'] = 'Please enter your message.';
+    }
+
+    if ($fieldErrors !== []) {
+        return [
+            'ok' => false,
+            'message' => 'Please correct the errors below.',
+            'field_errors' => $fieldErrors,
+        ];
+    }
+
+    $mailSubject = $subject !== '' ? $subject : 'Contact form message from ' . $name;
+    $mailSubject = '[Copier Catalog] ' . preg_replace("/[\r\n]/", '', $mailSubject);
+
+    $body = "You received a new message from the contact form.\n\n"
+        . 'Name: ' . $name . "\n"
+        . 'Email: ' . $email . "\n"
+        . 'Subject: ' . ($subject !== '' ? $subject : '(none)') . "\n\n"
+        . "Message:\n" . $message . "\n";
+
+    $headers = implode("\r\n", [
+        'MIME-Version: 1.0',
+        'Content-Type: text/plain; charset=UTF-8',
+        'From: ' . CATALOG_CONTACT_FROM,
+        'Reply-To: ' . $email,
+        'X-Mailer: PHP/' . phpversion(),
+    ]);
+
+    $sent = mail(CATALOG_CONTACT_EMAIL, $mailSubject, $body, $headers);
+    if (!$sent) {
+        return [
+            'ok' => false,
+            'message' => 'Sorry, we could not send your message. Please try again later or email us directly.',
+        ];
+    }
+
+    catalog_ensure_session();
+    $_SESSION['contact_csrf'] = bin2hex(random_bytes(32));
+
+    return [
+        'ok' => true,
+        'message' => 'Thank you! Your message has been sent. We will get back to you soon.',
+    ];
 }

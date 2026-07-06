@@ -1,12 +1,39 @@
 <?php
 /**
- * Contact page – frontend only.
+ * Contact page – form submits to contact@brochure.copiercatalog.com
  */
 require_once __DIR__ . '/functions.php';
 
 $pageTitle = 'Contact Us';
 $pageDescription = 'Get in touch with Copier Catalog for questions about our PDF catalog library.';
 $currentPage = 'contact';
+
+$formResult = null;
+$formValues = [
+    'name' => '',
+    'email' => '',
+    'subject' => '',
+    'message' => '',
+];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $formValues = [
+        'name' => trim((string) ($_POST['name'] ?? '')),
+        'email' => trim((string) ($_POST['email'] ?? '')),
+        'subject' => trim((string) ($_POST['subject'] ?? '')),
+        'message' => trim((string) ($_POST['message'] ?? '')),
+    ];
+    $formResult = catalog_process_contact_form($_POST);
+
+    if ($formResult['ok']) {
+        $formValues = [
+            'name' => '',
+            'email' => '',
+            'subject' => '',
+            'message' => '',
+        ];
+    }
+}
 
 require_once __DIR__ . '/header.php';
 ?>
@@ -31,7 +58,7 @@ require_once __DIR__ . '/header.php';
                     <h2>Get In Touch</h2>
                     <ul class="footer-contact footer-contact--page">
                         <li><i class="fa-solid fa-location-dot"></i> 123 Fifth Avenue, New York, NY 10160</li>
-                        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:contact@info.com">contact@info.com</a></li>
+                        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:<?= htmlspecialchars(CATALOG_CONTACT_EMAIL) ?>"><?= htmlspecialchars(CATALOG_CONTACT_EMAIL) ?></a></li>
                         <li><i class="fa-solid fa-phone"></i> <a href="tel:+19292426868">929-242-6868</a></li>
                     </ul>
                     <p class="text-muted mt-4">Business hours: Monday – Friday, 9:00 AM – 5:00 PM EST</p>
@@ -40,23 +67,51 @@ require_once __DIR__ . '/header.php';
             <div class="col-lg-7">
                 <div class="content-card">
                     <h2>Send a Message</h2>
-                    <form class="contact-form" action="#" method="post" onsubmit="return false;">
+
+                    <?php if ($formResult !== null): ?>
+                        <div class="alert alert-<?= $formResult['ok'] ? 'success' : 'danger' ?>" role="alert">
+                            <?= htmlspecialchars($formResult['message']) ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <form class="contact-form" action="<?= htmlspecialchars(catalog_url('contact/')) ?>" method="post" novalidate>
+                        <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(catalog_contact_csrf_token()) ?>">
+                        <div class="visually-hidden" aria-hidden="true">
+                            <label for="contact-website">Website</label>
+                            <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off">
+                        </div>
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label for="contact-name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="contact-name" name="name" required>
+                                <input type="text" class="form-control<?= isset($formResult['field_errors']['name']) ? ' is-invalid' : '' ?>"
+                                       id="contact-name" name="name" value="<?= htmlspecialchars($formValues['name']) ?>" required maxlength="100">
+                                <?php if (isset($formResult['field_errors']['name'])): ?>
+                                    <div class="invalid-feedback"><?= htmlspecialchars($formResult['field_errors']['name']) ?></div>
+                                <?php endif; ?>
                             </div>
                             <div class="col-md-6">
                                 <label for="contact-email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="contact-email" name="email" required>
+                                <input type="email" class="form-control<?= isset($formResult['field_errors']['email']) ? ' is-invalid' : '' ?>"
+                                       id="contact-email" name="email" value="<?= htmlspecialchars($formValues['email']) ?>" required>
+                                <?php if (isset($formResult['field_errors']['email'])): ?>
+                                    <div class="invalid-feedback"><?= htmlspecialchars($formResult['field_errors']['email']) ?></div>
+                                <?php endif; ?>
                             </div>
                             <div class="col-12">
                                 <label for="contact-subject" class="form-label">Subject</label>
-                                <input type="text" class="form-control" id="contact-subject" name="subject">
+                                <input type="text" class="form-control<?= isset($formResult['field_errors']['subject']) ? ' is-invalid' : '' ?>"
+                                       id="contact-subject" name="subject" value="<?= htmlspecialchars($formValues['subject']) ?>" maxlength="200">
+                                <?php if (isset($formResult['field_errors']['subject'])): ?>
+                                    <div class="invalid-feedback"><?= htmlspecialchars($formResult['field_errors']['subject']) ?></div>
+                                <?php endif; ?>
                             </div>
                             <div class="col-12">
                                 <label for="contact-message" class="form-label">Message</label>
-                                <textarea class="form-control" id="contact-message" name="message" rows="5" required></textarea>
+                                <textarea class="form-control<?= isset($formResult['field_errors']['message']) ? ' is-invalid' : '' ?>"
+                                          id="contact-message" name="message" rows="5" required maxlength="5000"><?= htmlspecialchars($formValues['message']) ?></textarea>
+                                <?php if (isset($formResult['field_errors']['message'])): ?>
+                                    <div class="invalid-feedback"><?= htmlspecialchars($formResult['field_errors']['message']) ?></div>
+                                <?php endif; ?>
                             </div>
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
