@@ -13,7 +13,7 @@ $categories = catalog_get_categories();
             <div class="row g-4">
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-brand">
-                        <img src="<?= $basePath ?>assets/images/icon.png" alt="" class="footer-brand__icon" width="64" height="64" loading="lazy">
+                        <img src="<?= $basePath ?>assets/images/icon.png" alt="" class="footer-brand__icon" width="85%" height="auto" loading="lazy">
                         <p class="footer-brand__desc">Brochure Copier Catalog is a free online platform for finding and downloading Download Brochures in PDF format. Whether you're a copier dealer comparing models, a technician looking up specs, or an office manager researching your next purchase, our site makes it easy to find the exact brochure you need — organized by brand. <a href="<?= $basePath ?>about/">Read more</a></p>
                     </div>
                 </div>
