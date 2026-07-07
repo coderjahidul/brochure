@@ -28,7 +28,7 @@ require_once __DIR__ . '/header.php';
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="content-card">
-                    <p class="lead">Brochure Copier Catalog is a free online platform for finding and downloading copier brochures in PDF format. Whether you're a copier dealer comparing models, a technician looking up specs, or an office manager researching your next purchase, our site makes it easy to find the exact brochure you need — organized by brand, with no account required and no complicated navigation.</p>
+                    <p class="lead">Brochure Copier Catalog is a free online platform for finding and downloading Download Brochures in PDF format. Whether you're a copier dealer comparing models, a technician looking up specs, or an office manager researching your next purchase, our site makes it easy to find the exact brochure you need — organized by brand, with no account required and no complicated navigation.</p>
 
                     <h2>What We Offer</h2>
                     <ul>
@@ -48,7 +48,7 @@ require_once __DIR__ . '/header.php';
                     <p>Beyond our brochure library, our blog provides helpful guides, setup and maintenance tips, and insights on copiers and office equipment. It's a useful resource if you want more than just spec sheets — whether you're troubleshooting a printer issue or trying to get more out of your equipment.</p>
 
                     <div class="d-flex flex-wrap gap-2 mt-3">
-                        <a href="<?= CATALOG_BASE_PATH ?>copier-brochures/" class="btn btn-primary">Browse Copier Brochures</a>
+                        <a href="<?= CATALOG_BASE_PATH ?>download-brochures/" class="btn btn-primary">Browse Download Brochures</a>
                         <a href="https://brochure.copiercatalog.com/blog/" class="btn btn-outline-primary">Visit Our Blog</a>
                     </div>
                 </div>

@@ -14,7 +14,7 @@ switch ($route) {
         require __DIR__ . '/includes/category.php';
         break;
 
-    case 'copier-brochures':
+    case 'download-brochures':
         require __DIR__ . '/includes/categories.php';
         break;
 

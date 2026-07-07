@@ -14,7 +14,7 @@
     RewriteRule ^search/?$ index.php [L,R=301,QSA]
 
     # Static pages
-    RewriteRule ^copier-brochures/?$ index.php?page=copier-brochures [L,QSA]
+    RewriteRule ^download-brochures/?$ index.php?page=download-brochures [L,QSA]
     RewriteRule ^about/?$ index.php?page=about [L,QSA]
     RewriteRule ^contact/?$ index.php?page=contact [L,QSA]
 

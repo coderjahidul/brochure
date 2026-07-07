@@ -10,7 +10,7 @@ $category = catalog_get_category($slug);
 if ($category === null) {
     http_response_code(404);
     $pageTitle = 'Category Not Found';
-    $currentPage = 'copier-brochures';
+    $currentPage = 'download-brochures';
     require_once __DIR__ . '/header.php';
     echo '<section class="page-section"><div class="container">';
     echo '<div class="catalog-empty"><i class="fa-regular fa-face-frown"></i>';
@@ -28,7 +28,7 @@ $pagination = catalog_paginate($filteredPdfs, $page);
 
 $pageTitle = $category['name'] . ' PDF Catalogs';
 $pageDescription = $category['description'];
-$currentPage = 'copier-brochures/';
+$currentPage = 'download-brochures/';
 $baseUrl = $category['url'];
 $extraParams = $searchQuery !== '' ? ['q' => $searchQuery] : [];
 
@@ -40,7 +40,7 @@ require_once __DIR__ . '/header.php';
         <nav aria-label="Breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?= CATALOG_BASE_PATH ?>">Home</a></li>
-                <li class="breadcrumb-item"><a href="<?= CATALOG_BASE_PATH ?>copier-brochures/">Copier Brochures</a></li>
+                <li class="breadcrumb-item"><a href="<?= CATALOG_BASE_PATH ?>download-brochures/">Download Brochures</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><?= htmlspecialchars($category['name']) ?></li>
             </ol>
         </nav>

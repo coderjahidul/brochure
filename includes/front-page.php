@@ -15,7 +15,7 @@ if ($isSearch) {
     $pageDescription = 'Search results for "' . $query . '" in copier machine PDF catalogs.';
 } else {
     $pageTitle = 'Free Copier Machine Brochures';
-    $pageDescription = 'Browse copier brochures from Canon, Epson, HP, Ricoh, Xerox, and other leading brands. View online or download for free - no registration required.';
+    $pageDescription = 'Browse Download Brochures from Canon, Epson, HP, Ricoh, Xerox, and other leading brands. View online or download for free - no registration required.';
 }
 
 $currentPage = 'home';
@@ -32,7 +32,7 @@ $categories = catalog_get_categories();
             <p class="hero-subtitle">Showing results for &ldquo;<?= htmlspecialchars($query) ?>&rdquo;</p>
             <?php else: ?>
             <h1 class="hero-title">Free Copier Machine Brochures</h1>
-            <p class="hero-subtitle">Browse copier brochures from Canon, Epson, HP, Ricoh, Xerox, and other leading brands. View online or download for free - no registration required.</p>
+            <p class="hero-subtitle">Browse Download Brochures from Canon, Epson, HP, Ricoh, Xerox, and other leading brands. View online or download for free - no registration required.</p>
             <?php endif; ?>
         </div>
     </div>
