@@ -35,6 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+catalog_contact_csrf_token();
+
 require_once __DIR__ . '/header.php';
 ?>
 
