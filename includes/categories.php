@@ -6,7 +6,7 @@ require_once __DIR__ . '/functions.php';
 
 $pageTitle = 'Download Brochures';
 $pageDescription = 'Browse and compare copier machine brochures from trusted brands.';
-$currentPage = 'download-brochures';
+$currentPage = 'download-copier-brochures';
 $categories = catalog_get_categories();
 
 require_once __DIR__ . '/header.php';

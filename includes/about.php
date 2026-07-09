@@ -48,7 +48,7 @@ require_once __DIR__ . '/header.php';
                     <p>Beyond our brochure library, our blog provides helpful guides, setup and maintenance tips, and insights on copiers and office equipment. It's a useful resource if you want more than just spec sheets — whether you're troubleshooting a printer issue or trying to get more out of your equipment.</p>
 
                     <div class="d-flex flex-wrap gap-2 mt-3">
-                        <a href="<?= CATALOG_BASE_PATH ?>download-brochures/" class="btn btn-primary">Browse Download Brochures</a>
+                        <a href="<?= CATALOG_BASE_PATH ?>download-copier-brochures/" class="btn btn-primary">Browse Download Brochures</a>
                         <a href="https://brochure.copiercatalog.com/blog/" class="btn btn-outline-primary">Visit Our Blog</a>
                     </div>
                 </div>

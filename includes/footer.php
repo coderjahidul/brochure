@@ -25,7 +25,7 @@ $categories = catalog_get_categories();
                         <li><a href="<?= htmlspecialchars($cat['url']) ?>"><?= htmlspecialchars($cat['name']) ?></a></li>
                         <?php endforeach; ?>
                         <?php if (count($categories) > 8): ?>
-                        <li><a href="<?= $basePath ?>download-brochures/">View all Download Brochures</a></li>
+                        <li><a href="<?= $basePath ?>download-copier-brochures/">View all Download Brochures</a></li>
                         <?php endif; ?>
                     </ul>
                 </div>
@@ -34,7 +34,7 @@ $categories = catalog_get_categories();
                     <h5 class="footer-heading">Quick Links</h5>
                     <ul class="footer-links">
                         <li><a href="<?= $basePath ?>">Home</a></li>
-                        <li><a href="<?= $basePath ?>download-brochures/">Download Brochures</a></li>
+                        <li><a href="<?= $basePath ?>download-copier-brochures/">Download Brochures</a></li>
                         <li><a href="<?= $basePath ?>about/">About Us</a></li>
                         <li><a href="https://brochure.copiercatalog.com/blog/">Blog</a></li>
                         <li><a href="<?= $basePath ?>contact/">Contact</a></li>
