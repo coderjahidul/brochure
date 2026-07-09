@@ -48,6 +48,9 @@ $basePath = CATALOG_BASE_PATH;
                         <a class="nav-link<?= $currentPage === 'download-copier-brochures' ? ' active' : '' ?>" href="<?= $basePath ?>download-copier-brochures/">Download Brochures</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link<?= $currentPage === 'other-brochures' ? ' active' : '' ?>" href="<?= $basePath ?>other-brochures/">Other Brochures</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link<?= $currentPage === 'about' ? ' active' : '' ?>" href="<?= $basePath ?>about/">About</a>
                     </li>
                     <li class="nav-item">

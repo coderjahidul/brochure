@@ -12,6 +12,7 @@ define('CATALOG_CONTACT_EMAIL', 'contact@brochure.copiercatalog.com');
 define('CATALOG_CONTACT_FROM', 'noreply@brochure.copiercatalog.com');
 define('CATALOG_ROOT', dirname(__DIR__));
 define('CATALOG_EXCLUDED_DIRS', ['api', 'assets', 'cache', 'includes', 'pdf-catalogs']);
+define('CATALOG_OTHER_BROCHURE_DIRS', ['3d-systems']);
 define('CATALOG_CACHE_FILE', CATALOG_ROOT . '/cache/catalog-cache.json');
 define('CATALOG_CACHE_TTL', 300); // 5 minutes
 define('CATALOG_HOMEPAGE_LIMIT', 3);
@@ -373,6 +374,33 @@ function catalog_find_thumbnail(string $pdfPath): ?string
 }
 
 /**
+ * Folder names treated as "Other Brochures" (not copier brands).
+ *
+ * @return array<int, string>
+ */
+function catalog_other_brochure_dirs(): array
+{
+    return CATALOG_OTHER_BROCHURE_DIRS;
+}
+
+/**
+ * Whether a category belongs on the Other Brochures pages.
+ *
+ * @param array<string, mixed> $category
+ */
+function catalog_is_other_brochure_category(array $category): bool
+{
+    $slug = $category['slug'] ?? '';
+    foreach (catalog_other_brochure_dirs() as $dir) {
+        if (catalog_slugify($dir) === $slug) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+/**
  * Get all categories.
  *
  * @return array<int, array<string, mixed>>
@@ -380,6 +408,32 @@ function catalog_find_thumbnail(string $pdfPath): ?string
 function catalog_get_categories(): array
 {
     return catalog_scan()['categories'];
+}
+
+/**
+ * Copier brand categories (excludes Other Brochures folders).
+ *
+ * @return array<int, array<string, mixed>>
+ */
+function catalog_get_copier_categories(): array
+{
+    return array_values(array_filter(
+        catalog_get_categories(),
+        static fn(array $category): bool => !catalog_is_other_brochure_category($category)
+    ));
+}
+
+/**
+ * Other Brochures categories (e.g. 3D Systems).
+ *
+ * @return array<int, array<string, mixed>>
+ */
+function catalog_get_other_brochure_categories(): array
+{
+    return array_values(array_filter(
+        catalog_get_categories(),
+        static fn(array $category): bool => catalog_is_other_brochure_category($category)
+    ));
 }
 
 /**

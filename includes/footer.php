@@ -3,7 +3,8 @@
  * Site footer ÃƒÂ¯Ã‚Â¿Ã‚Â½ 4-column layout, social links, back to top.
  */
 $basePath = CATALOG_BASE_PATH;
-$categories = catalog_get_categories();
+$categories = catalog_get_copier_categories();
+$otherCategories = catalog_get_other_brochure_categories();
 ?>
 </main>
 
@@ -35,6 +36,7 @@ $categories = catalog_get_categories();
                     <ul class="footer-links">
                         <li><a href="<?= $basePath ?>">Home</a></li>
                         <li><a href="<?= $basePath ?>download-copier-brochures/">Download Brochures</a></li>
+                        <li><a href="<?= $basePath ?>other-brochures/">Other Brochures</a></li>
                         <li><a href="<?= $basePath ?>about/">About Us</a></li>
                         <li><a href="https://brochure.copiercatalog.com/blog/">Blog</a></li>
                         <li><a href="<?= $basePath ?>contact/">Contact</a></li>

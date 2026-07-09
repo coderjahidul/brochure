@@ -21,7 +21,7 @@ if ($isSearch) {
 $currentPage = 'home';
 require_once __DIR__ . '/header.php';
 
-$categories = catalog_get_categories();
+$categories = catalog_get_copier_categories();
 ?>
 
 <section class="hero-section">

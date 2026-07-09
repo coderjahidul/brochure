@@ -18,6 +18,10 @@ switch ($route) {
         require __DIR__ . '/includes/categories.php';
         break;
 
+    case 'other-brochures':
+        require __DIR__ . '/includes/other-brochures.php';
+        break;
+
     case 'about':
         require __DIR__ . '/includes/about.php';
         break;

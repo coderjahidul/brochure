@@ -21,6 +21,10 @@ if ($category === null) {
     exit;
 }
 
+$isOtherBrochure = catalog_is_other_brochure_category($category);
+$parentPage = $isOtherBrochure ? 'other-brochures' : 'download-copier-brochures';
+$parentLabel = $isOtherBrochure ? 'Other Brochures' : 'Download Brochures';
+
 $searchQuery = trim($_GET['q'] ?? '');
 $page = max(1, (int) ($_GET['page'] ?? 1));
 $filteredPdfs = catalog_filter_pdfs($category['pdfs'], $searchQuery);
@@ -28,7 +32,7 @@ $pagination = catalog_paginate($filteredPdfs, $page);
 
 $pageTitle = $category['name'] . ' PDF Catalogs';
 $pageDescription = $category['description'];
-$currentPage = 'download-copier-brochures/';
+$currentPage = $parentPage;
 $baseUrl = $category['url'];
 $extraParams = $searchQuery !== '' ? ['q' => $searchQuery] : [];
 
@@ -40,7 +44,7 @@ require_once __DIR__ . '/header.php';
         <nav aria-label="Breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?= CATALOG_BASE_PATH ?>">Home</a></li>
-                <li class="breadcrumb-item"><a href="<?= CATALOG_BASE_PATH ?>download-copier-brochures/">Download Brochures</a></li>
+                <li class="breadcrumb-item"><a href="<?= CATALOG_BASE_PATH . $parentPage ?>/"><?= htmlspecialchars($parentLabel) ?></a></li>
                 <li class="breadcrumb-item active" aria-current="page"><?= htmlspecialchars($category['name']) ?></li>
             </ol>
         </nav>

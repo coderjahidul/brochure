@@ -15,6 +15,7 @@
 
     # Static pages
     RewriteRule ^download-copier-brochures/?$ index.php?page=download-copier-brochures [L,QSA]
+    RewriteRule ^other-brochures/?$ index.php?page=other-brochures [L,QSA]
     RewriteRule ^about/?$ index.php?page=about [L,QSA]
     RewriteRule ^contact/?$ index.php?page=contact [L,QSA]
 
