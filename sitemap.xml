@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Site pages -->
+  <url><loc>https://brochure.copiercatalog.com/</loc></url>
+  <url><loc>https://brochure.copiercatalog.com/download-copier-brochures/</loc></url>
+  <url><loc>https://brochure.copiercatalog.com/other-brochures/</loc></url>
+  <url><loc>https://brochure.copiercatalog.com/about/</loc></url>
+  <url><loc>https://brochure.copiercatalog.com/contact/</loc></url>
+
+  <!-- Download Brochures category pages -->
+  <url><loc>https://brochure.copiercatalog.com/category/brother/</loc></url>
+  <url><loc>https://brochure.copiercatalog.com/category/canon/</loc></url>
+  <url><loc>https://brochure.copiercatalog.com/category/epson/</loc></url>
+  <url><loc>https://brochure.copiercatalog.com/category/fuji-xerox/</loc></url>
+  <url><loc>https://brochure.copiercatalog.com/category/hp/</loc></url>
+  <url><loc>https://brochure.copiercatalog.com/category/kip/</loc></url>
+  <url><loc>https://brochure.copiercatalog.com/category/kodak/</loc></url>
+  <url><loc>https://brochure.copiercatalog.com/category/kyocera/</loc></url>
+  <url><loc>https://brochure.copiercatalog.com/category/konica-minolta/</loc></url>
+  <url><loc>https://brochure.copiercatalog.com/category/kyocera_au/</loc></url>
+  <url><loc>https://brochure.copiercatalog.com/category/lexmark/</loc></url>
+  <url><loc>https://brochure.copiercatalog.com/category/oki/</loc></url>
+  <url><loc>https://brochure.copiercatalog.com/category/ricoh/</loc></url>
+  <url><loc>https://brochure.copiercatalog.com/category/ricoh_au/</loc></url>
+  <url><loc>https://brochure.copiercatalog.com/category/xerox/</loc></url>
+  <url><loc>https://brochure.copiercatalog.com/category/samsung/</loc></url>
+  <url><loc>https://brochure.copiercatalog.com/category/sharp/</loc></url>
+  <url><loc>https://brochure.copiercatalog.com/category/riso/</loc></url>
+
+  <!-- Other Brochures category pages -->
+  <url><loc>https://brochure.copiercatalog.com/category/3d-systems/</loc></url>
+  
+
   <url><loc>https://brochure.copiercatalog.com/brother/DCPL2550DW_2PgBrochure_fin.pdf</loc></url>
   <url><loc>https://brochure.copiercatalog.com/brother/HL-L5100DN.pdf</loc></url>
   
