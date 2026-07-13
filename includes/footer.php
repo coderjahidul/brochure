@@ -46,9 +46,9 @@ $otherCategories = catalog_get_other_brochure_categories();
                 <div class="col-lg-3 col-md-6">
                     <h5 class="footer-heading">Contact</h5>
                     <ul class="footer-contact">
-                        <li><i class="fa-solid fa-location-dot"></i> 123 Fifth Avenue, New York, NY 10160</li>
+                        <li><i class="fa-solid fa-location-dot"></i> 6300 Riverside Plaza NW, Albuquerque, NM 87120 United States</li>
                         <li><i class="fa-solid fa-envelope"></i> <a href="mailto:<?= htmlspecialchars(CATALOG_CONTACT_EMAIL) ?>"><?= htmlspecialchars(CATALOG_CONTACT_EMAIL) ?></a></li>
-                        <li><i class="fa-solid fa-phone"></i> <a href="tel:+19292426868">929-242-6868</a></li>
+                        <!-- <li><i class="fa-solid fa-phone"></i> <a href="tel:+19292426868">929-242-6868</a></li> -->
                     </ul>
                 </div>
             </div>

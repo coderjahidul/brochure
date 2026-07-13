@@ -59,9 +59,9 @@ require_once __DIR__ . '/header.php';
                 <div class="content-card h-100">
                     <h2>Get In Touch</h2>
                     <ul class="footer-contact footer-contact--page">
-                        <li><i class="fa-solid fa-location-dot"></i> 123 Fifth Avenue, New York, NY 10160</li>
+                        <li><i class="fa-solid fa-location-dot"></i> 6300 Riverside Plaza NW, Albuquerque, NM 87120 United States</li>
                         <li><i class="fa-solid fa-envelope"></i> <a href="mailto:<?= htmlspecialchars(CATALOG_CONTACT_EMAIL) ?>"><?= htmlspecialchars(CATALOG_CONTACT_EMAIL) ?></a></li>
-                        <li><i class="fa-solid fa-phone"></i> <a href="tel:+19292426868">929-242-6868</a></li>
+                        <!-- <li><i class="fa-solid fa-phone"></i> <a href="tel:+19292426868">929-242-6868</a></li> -->
                     </ul>
                     <p class="text-muted mt-4">Business hours: Monday – Friday, 9:00 AM – 5:00 PM EST</p>
                 </div>
