@@ -63,8 +63,8 @@ $basePath = CATALOG_BASE_PATH;
 
                 <form class="header-search-form d-flex" role="search" method="get" action="<?= $basePath ?>">
                     <div class="input-group">
-                        <input type="search" class="form-control" name="q" placeholder="Search catalogs"
-                               value="<?= htmlspecialchars($_GET['q'] ?? '') ?>" aria-label="Search catalogs">
+                        <input type="search" class="form-control" name="q" placeholder="Search brochure"
+                               value="<?= htmlspecialchars($_GET['q'] ?? '') ?>" aria-label="Search brochure">
                         <button class="btn btn-primary" type="submit" aria-label="Search">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
