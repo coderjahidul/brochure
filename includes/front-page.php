@@ -104,7 +104,7 @@ $categories = catalog_get_copier_categories();
 <section class="category-section page-section" id="category-<?= htmlspecialchars($category['slug']) ?>">
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title"><?= htmlspecialchars($category['name']) ?></h2>
+            <h2 class="section-title"><a href="<?= htmlspecialchars($category['url']) ?>"><?= htmlspecialchars($category['name']) ?></a></h2>
             <span class="section-badge"><?= (int) $category['pdf_count'] ?> PDF<?= $category['pdf_count'] !== 1 ? 's' : '' ?></span>
         </div>
 
