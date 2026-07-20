@@ -130,12 +130,27 @@ function catalog_scan_mtime(): int
     $mtime = 0;
     foreach (catalog_category_dirs() as $dirPath) {
         $mtime = max($mtime, filemtime($dirPath) ?: 0);
-        foreach (glob($dirPath . '/*.pdf') ?: [] as $pdfPath) {
-            $mtime = max($mtime, filemtime($pdfPath) ?: 0);
+        foreach (glob($dirPath . '/*.{pdf,txt}', GLOB_BRACE) ?: [] as $filePath) {
+            $mtime = max($mtime, filemtime($filePath) ?: 0);
         }
     }
 
     return $mtime;
+}
+
+/**
+ * Read optional text content from a category folder.
+ */
+function catalog_read_category_text_file(string $dirPath, string $filename): ?string
+{
+    $file = $dirPath . '/' . $filename;
+    if (!is_file($file)) {
+        return null;
+    }
+
+    $content = trim((string) file_get_contents($file));
+
+    return $content !== '' ? $content : null;
 }
 
 /**
@@ -256,10 +271,12 @@ function catalog_scan(): array
         $folderName = basename($dirPath);
         $slug = catalog_slugify($folderName);
         $displayName = catalog_title_from_slug($slug);
-        $descriptionFile = $dirPath . '/description.txt';
-        $description = is_file($descriptionFile)
-            ? trim((string) file_get_contents($descriptionFile))
-            : 'Browse our collection of ' . $folderName . ' product catalogs and brochures.';
+        $description = catalog_read_category_text_file($dirPath, 'description.txt')
+            ?? 'Browse our collection of ' . $folderName . ' product catalogs and brochures.';
+        $metaTitle = catalog_read_category_text_file($dirPath, 'meta-title.txt')
+            ?? $displayName . ' PDF Catalogs';
+        $metaDescription = catalog_read_category_text_file($dirPath, 'meta-description.txt')
+            ?? $description;
 
         $pdfs = catalog_scan_pdfs_in_dir($dirPath, $folderName, $slug, $displayName);
         usort($pdfs, static fn($a, $b) => $b['mtime'] <=> $a['mtime']);
@@ -272,6 +289,8 @@ function catalog_scan(): array
             'name' => $displayName,
             'slug' => $slug,
             'description' => $description,
+            'meta_title' => $metaTitle,
+            'meta_description' => $metaDescription,
             'pdf_count' => count($pdfs),
             'pdfs' => $pdfs,
         ];

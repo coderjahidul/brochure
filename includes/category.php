@@ -30,8 +30,8 @@ $page = max(1, (int) ($_GET['page'] ?? 1));
 $filteredPdfs = catalog_filter_pdfs($category['pdfs'], $searchQuery);
 $pagination = catalog_paginate($filteredPdfs, $page);
 
-$pageTitle = $category['name'] . ' PDF Catalogs';
-$pageDescription = $category['description'];
+$pageTitle = $category['meta_title'] ?? $category['name'] . ' PDF Catalogs';
+$pageDescription = $category['meta_description'] ?? $category['description'];
 $currentPage = $parentPage;
 $baseUrl = $category['url'];
 $extraParams = $searchQuery !== '' ? ['q' => $searchQuery] : [];
