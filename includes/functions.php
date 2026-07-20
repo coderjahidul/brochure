@@ -166,7 +166,7 @@ function catalog_hydrate_pdf(array $pdf): array
  */
 function catalog_hydrate_category(array $category): array
 {
-    $category['url'] = catalog_url('category/' . $category['slug'] . '/');
+    $category['url'] = catalog_url($category['slug'] . '/');
     $category['pdfs'] = array_map('catalog_hydrate_pdf', $category['pdfs'] ?? []);
 
     return $category;

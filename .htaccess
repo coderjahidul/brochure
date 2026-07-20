@@ -2,13 +2,12 @@
     RewriteEngine On
     RewriteBase /brochure/
 
-    # Serve existing files and directories directly
-    RewriteCond %{REQUEST_FILENAME} -f [OR]
-    RewriteCond %{REQUEST_FILENAME} -d
+    # Serve existing files directly (PDFs, assets, API scripts)
+    RewriteCond %{REQUEST_FILENAME} -f
     RewriteRule ^ - [L]
 
-    # Category pages: /category/ricoh/
-    RewriteRule ^category/([a-z0-9-]+)/?$ index.php?page=category&slug=$1 [L,QSA]
+    # Redirect old category URLs: /category/brother/ -> /brother/
+    RewriteRule ^category/([a-z0-9-]+)/?$ $1/ [L,R=301]
 
     # Redirect old search URLs to homepage
     RewriteRule ^search/?$ index.php [L,R=301,QSA]
@@ -18,6 +17,9 @@
     RewriteRule ^other-brochures/?$ index.php?page=other-brochures [L,QSA]
     RewriteRule ^about/?$ index.php?page=about [L,QSA]
     RewriteRule ^contact/?$ index.php?page=contact [L,QSA]
+
+    # Brand pages: /brother/, /canon/, etc.
+    RewriteRule ^([a-z0-9-]+)/?$ index.php?page=category&slug=$1 [L,QSA]
 
     # Homepage
     RewriteRule ^$ index.php [L]
